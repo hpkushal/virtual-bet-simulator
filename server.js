@@ -1,48 +1,41 @@
-const http = require('http');
-const fs = require('fs');
+const express = require('express');
 const path = require('path');
 
-const PORT = 3000;
+const app = express();
+const PORT = process.env.PORT || 3000;
 
-const MIME_TYPES = {
-    '.html': 'text/html',
-    '.js': 'text/javascript',
-    '.css': 'text/css',
-    '.json': 'application/json',
-    '.ico': 'image/x-icon',
-};
+// Serve static files from public directory
+app.use(express.static('public'));
 
-const server = http.createServer((req, res) => {
-    // Handle root path
-    if (req.url === '/') {
-        req.url = '/public/index.html';
-    }
+// Serve static files from src directory
+app.use('/src', express.static('src'));
 
-    // Get file path
-    let filePath = path.join(__dirname, req.url);
-    const ext = path.extname(filePath);
-    
-    // Set content type
-    const contentType = MIME_TYPES[ext] || 'text/plain';
-
-    // Read file
-    fs.readFile(filePath, (error, content) => {
-        if (error) {
-            if(error.code === 'ENOENT') {
-                res.writeHead(404);
-                res.end('File not found');
-            } else {
-                res.writeHead(500);
-                res.end('Server Error: ' + error.code);
-            }
-        } else {
-            res.writeHead(200, { 'Content-Type': contentType });
-            res.end(content, 'utf-8');
-        }
-    });
+// Handle root path
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
-server.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}/`);
-    console.log('To stop the server, press Ctrl+C');
-}); 
+// Error handling middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something broke! Please refresh the page.');
+});
+
+// Start server with port retry logic
+const startServer = (retryPort = PORT) => {
+    app.listen(retryPort)
+        .on('error', (err) => {
+            if (err.code === 'EADDRINUSE') {
+                console.log(`Port ${retryPort} is busy, trying ${retryPort + 1}...`);
+                startServer(retryPort + 1);
+            } else {
+                console.error('Server error:', err);
+            }
+        })
+        .on('listening', () => {
+            console.log(`Server running at http://localhost:${retryPort}/`);
+            console.log('To stop the server, press Ctrl+C');
+        });
+};
+
+startServer(); 
