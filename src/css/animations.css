@@ -1,0 +1,62 @@
+/* Animations for Risk & Reward Simulator */
+
+@keyframes money-burst {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes persona-pop {
+    0% { transform: translateY(10px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes risk-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes win-celebration {
+    0% { transform: rotate(0deg) scale(1); }
+    25% { transform: rotate(10deg) scale(1.2); }
+    75% { transform: rotate(-10deg) scale(1.2); }
+    100% { transform: rotate(0deg) scale(1); }
+}
+
+/* Animation Classes */
+.money-animation { 
+    animation: money-burst 0.5s ease-in-out; 
+}
+
+.persona-pop { 
+    animation: persona-pop 0.3s ease-out; 
+}
+
+.risk-pulse {
+    animation: risk-pulse 1s ease-in-out infinite;
+}
+
+.win-celebration {
+    animation: win-celebration 0.8s ease-in-out;
+}
+
+/* Hover Animations */
+.event-btn:hover .odds-badge {
+    transform: scale(1.1) rotate(3deg);
+    transition: transform 0.2s ease-out;
+}
+
+.chip:hover {
+    transform: translateY(-2px);
+    transition: transform 0.2s ease-out;
+}
+
+/* Transition Classes */
+.smooth-transition {
+    transition: all 0.3s ease-in-out;
+}
+
+.risk-meter-transition {
+    transition: width 0.5s ease-in-out;
+} 
