@@ -8,7 +8,7 @@ Before you begin, ensure you have the following installed:
 - [Node.js](https://nodejs.org/) (v14 or higher)
 - [npm](https://www.npmjs.com/) (comes with Node.js)
 
-## Installation & Setup 🚀
+## Quick Start 🚀
 
 1. Clone the repository:
 ```bash
@@ -21,25 +21,47 @@ cd virtual-bet-simulator
 npm install
 ```
 
-## Running the Game 🎮
-
-1. Start the server:
+3. Start the server:
 ```bash
 npm start
 ```
 
-2. Open your web browser and navigate to:
+4. Open your web browser and navigate to the URL shown in the terminal (usually http://localhost:3000)
+
+## Troubleshooting Common Issues 🔧
+
+If you encounter any issues:
+
+1. **Clean Install**
+```bash
+npm run clean
 ```
-http://localhost:3000
+This will remove node_modules, package-lock.json and perform a fresh install.
+
+2. **Port Already in Use**
+- The server will automatically try the next available port
+- Check your terminal for the correct URL
+- Or kill existing Node processes:
+```bash
+# On macOS/Linux
+killall node
+# On Windows
+taskkill /F /IM node.exe
 ```
 
-Note: If port 3000 is already in use, the server will automatically try the next available port. Check your terminal for the correct URL.
+3. **Game Not Loading**
+- Make sure JavaScript is enabled in your browser
+- Check the browser's console for errors (F12 key)
+- Try a different browser (Chrome or Firefox recommended)
 
-To stop the server: Press `Ctrl+C` in the terminal.
+4. **Missing Styles**
+- Check your internet connection (the game uses Tailwind CDN)
+- Try clearing your browser cache
+- Refresh the page (Ctrl+F5 or Cmd+R)
 
 ## Development Mode 🛠️
 
-To run the game with auto-reload during development:
+For development with auto-reload:
 ```bash
 npm run dev
 ```
@@ -79,16 +101,6 @@ npm run dev
 | Baby Betsy | 0-30% | Conservative |
 | Midlife Crisis Mike | 31-70% | Moderate |
 | YOLO Yolanda | 71-100% | Aggressive |
-
-## Troubleshooting 🔧
-
-| Issue | Solution |
-|-------|----------|
-| Port 3000 in use | Server will automatically try next port |
-| Game not loading | Check if JavaScript is enabled |
-| Styles missing | Check internet connection (Tailwind CDN) |
-| Server won't start | Try `killall node` then restart |
-| Animations stuck | Refresh page (Ctrl+F5/Cmd+R) |
 
 ## Project Structure 📁
 
