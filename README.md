@@ -8,7 +8,7 @@ A risk-awareness gambling simulator where players aim to turn $1,000 into $10,00
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/virtual-bet-simulator.git
+git clone https://github.com/hpkushal/virtual-bet-simulator.git
 cd virtual-bet-simulator
 ```
 
