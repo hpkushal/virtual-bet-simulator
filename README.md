@@ -2,9 +2,13 @@
 
 A risk-awareness gambling simulator where players aim to turn $1,000 into $10,000 while managing their risk profile. Features humorous personas and real-time risk assessment.
 
-**Developed by kparameshwara** ��‍💻
+## Prerequisites 📋
 
-## Quick Start 🚀
+Before you begin, ensure you have the following installed:
+- [Node.js](https://nodejs.org/) (v14 or higher)
+- [npm](https://www.npmjs.com/) (comes with Node.js)
+
+## Installation & Setup 🚀
 
 1. Clone the repository:
 ```bash
@@ -12,12 +16,33 @@ git clone https://github.com/hpkushal/virtual-bet-simulator.git
 cd virtual-bet-simulator
 ```
 
-2. Open `public/index.html` in your browser:
-   - **Chrome/Edge**: Double-click the file
-   - **Firefox**: Right-click > Open With > Firefox
-   - **Safari**: Right-click > Open With > Safari
+2. Install dependencies:
+```bash
+npm install
+```
 
-No installation needed! The game uses CDN for dependencies.
+## Running the Game 🎮
+
+1. Start the server:
+```bash
+npm start
+```
+
+2. Open your web browser and navigate to:
+```
+http://localhost:3000
+```
+
+Note: If port 3000 is already in use, the server will automatically try the next available port. Check your terminal for the correct URL.
+
+To stop the server: Press `Ctrl+C` in the terminal.
+
+## Development Mode 🛠️
+
+To run the game with auto-reload during development:
+```bash
+npm run dev
+```
 
 ## Features ✨
 
@@ -27,14 +52,16 @@ No installation needed! The game uses CDN for dependencies.
 - 🎲 Multiple betting events with different odds
 - 🎯 Interactive and responsive UI
 - 📱 Mobile-friendly design
+- 🔄 Continuous gameplay with reset option
 
 ## Game Rules 📜
 
 | Objective | Details |
 |-----------|---------|
 | Starting Balance | $1,000 |
-| Win Condition | Reach $10,000 |
+| Win Milestone | Reach $10,000 |
 | Loss Condition | Balance reaches $0 |
+| Gameplay | Continuous until reset |
 
 ### Betting Events 🎲
 
@@ -53,6 +80,16 @@ No installation needed! The game uses CDN for dependencies.
 | Midlife Crisis Mike | 31-70% | Moderate |
 | YOLO Yolanda | 71-100% | Aggressive |
 
+## Troubleshooting 🔧
+
+| Issue | Solution |
+|-------|----------|
+| Port 3000 in use | Server will automatically try next port |
+| Game not loading | Check if JavaScript is enabled |
+| Styles missing | Check internet connection (Tailwind CDN) |
+| Server won't start | Try `killall node` then restart |
+| Animations stuck | Refresh page (Ctrl+F5/Cmd+R) |
+
 ## Project Structure 📁
 
 ```
@@ -63,18 +100,13 @@ virtual-bet-simulator/
 │   │   ├── personas.js      # Risk personas logic
 │   │   ├── game.js          # Core game mechanics
 │   │   └── animations.js    # UI animations
-│   ├── css/
-│   │   ├── styles.css       # Custom styles
-│   │   └── animations.css   # Animation definitions
-│   └── components/          # Future component abstractions
+│   └── css/
+│       ├── styles.css       # Custom styles
+│       └── animations.css   # Animation definitions
 ├── public/
-│   ├── assets/             # Images and static resources
+│   ├── assets/             # Static resources
 │   └── index.html          # Main entry point
-└── docs/
-    ├── guides/
-    │   ├── USER_GUIDE.md    # Detailed user guide
-    │   └── TECHNICAL_GUIDE.md # Technical documentation
-    └── DEVELOPER.md         # Developer documentation
+└── server.js              # Express server configuration
 ```
 
 ## Documentation 📚
@@ -82,15 +114,6 @@ virtual-bet-simulator/
 - [User Guide](docs/guides/USER_GUIDE.md) - How to play the game
 - [Technical Guide](docs/guides/TECHNICAL_GUIDE.md) - Technical details and formulas
 - [Developer Guide](docs/DEVELOPER.md) - Development and contribution guidelines
-
-## Troubleshooting 🛠️
-
-| Issue | Solution |
-|-------|----------|
-| Game not loading | Check if JavaScript is enabled |
-| Styles missing | Check internet connection (Tailwind CDN) |
-| Animations stuck | Refresh page (Ctrl+F5/Cmd+R) |
-| Share not working | Allow pop-ups for Twitter |
 
 ## Contributing 🤝
 
